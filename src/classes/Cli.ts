@@ -68,7 +68,7 @@ class Cli {
         if (answers.vehicleType === 'Car') {
           // create a car
           this.createCar();
-        } else if (answers.vehicleType === 'Motorcycle') {
+        } else if (answers.vehicleType === 'Motorbike') {
           this.createMotorbike();
         } else if (answers.vehicleType === 'Truck') {
           this.createTruck();
@@ -396,7 +396,7 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               if (this.vehicles[i] instanceof Truck) {
-                this.findVehicleToTow(this.vehicles[i]);
+                this.findVehicleToTow(this.vehicles[i] as Truck);
                 return;
               }
             }
@@ -406,8 +406,7 @@ class Cli {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin) {
               if (this.vehicles[i] instanceof Motorbike) {
-                this.vehicles[i].wheelie();
-                return;
+                (this.vehicles[i] as Motorbike).wheelie();
               }
             }
           }
